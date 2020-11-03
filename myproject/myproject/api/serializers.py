@@ -16,6 +16,9 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 
 # User Serializer
+from myproject.api.models import File
+
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -32,4 +35,9 @@ class RegisterSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(validated_data['username'], validated_data['email'], validated_data['password'])
 
         return user
+
+class FileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = File
+        fields = "__all__"
 
